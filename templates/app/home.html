@@ -1,9 +1,20 @@
 {% extends "app/base.html" %} {% block content %}
-<h1>Articles</h1>
+<main class="max-w-7xl mx-auto px-10 py-6">
+<h1 class="text-6xl font-semibold tracking-tight mb-4">Articles</h1>
+
+<a
+  class="button primary inline-block mb-6 w-full sm:w-auto text-center"
+  href="{% url 'create_article' %}"
+  >Create article</a
+>
+
+<h2 class="text-4xl font-medium tracking-tight">Your latest articles</h2>
 <ul>
   {% for article in articles %}
-  <li>{{ article.title}} with {{article.word_count}} words</li>
+  <li><a class="text-2xl flex items-center"
+    href={% url 'update_article' article.id %}>{{ article.title}}<span class="ml-2 px-4 py-0.5 text-xs rounded-sm uppercase bg-gray-200">{{article.status}}</span></a>
+    with {{article.word_count}} words</li>
   {% endfor %}
 </ul>
-
+</main>
 {% endblock content %}

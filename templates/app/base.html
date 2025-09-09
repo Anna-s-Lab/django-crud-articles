@@ -15,14 +15,27 @@
     <title>Django - CRUD</title>
   </head>
   <body>
+    {% url 'create_article' as create_article %} {% url 'home' as home %} {% url
+    'account_email' as account_email %}
+
     <nav class="px-10 py-4 border-b border-gray-300 shadow-md">
       <div class="flex justify-end items-center gap-6 max-w-7xl mx-auto">
         {% if user.is_authenticated %}
-        <a class="button primary" href="{% url 'account_login' %}">
+        <a
+          class="button primary"
+          href="{% if request.path != create_article %}{{ create_article }} {% else %} # {% endif %}"
+        >
           Create new</a
         >
-        <a class="hover:underline" href="{% url 'home' %}">Articles</a>
-        <a class="hover:underline" href="{% url 'account_login' %}">
+        <a
+          class="hover:underline {% if request.path == home %} font-semibold {% endif %}"
+          href="{{ home }}"
+          >Articles</a
+        >
+        <a
+          class="hover:underline {% if request.path == account_email %} font-semibold {% endif %}"
+          href="{{ account_email }}"
+        >
           Change email</a
         >
         <form method="POST" action="{% url 'account_logout' %}">
