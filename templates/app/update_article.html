@@ -1,0 +1,19 @@
+{% extends "app/base.html" %} {% block content %}
+<h1>Update Article</h1>
+<p>Last edited on {{ article.updated_at | date:"jS F Y" }}</p>
+<form method="post">
+  {% csrf_token %} {{ form.as_p}}
+  <button type="submit">Save</button>
+</form>
+
+{% endblock content %} {% block page_js %}
+<script>
+  const contentMarkdown = new EasyMDE({
+    element: document.getElementById("id_content"),
+    spellChecker: false,
+    status: false,
+    toolbar: false,
+    forceSync: true,
+  });
+</script>
+{% endblock page_js %}

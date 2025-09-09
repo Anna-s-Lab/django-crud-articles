@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "../tailwind.config.js";
+
+.button {
+  @apply font-medium px-4 py-2 rounded-md;
+}
+
+.primary {
+  @apply shadow-sm border border-emerald-700 text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500;
+}
+
+.secondary {
+  @apply shadow-sm border border-gray-300 text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500;
+}
